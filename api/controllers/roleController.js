@@ -6,10 +6,10 @@ class RoleController{
         const { name, description } = req.body
 
         try{
-            const role = roleService.register({ name, description })
+            const role = await roleService.register({ name, description })
             res.status(201).send(role)
         }catch(error){
-            res.status(400).send(error.message)
+            res.status(400).send({ message: error.message })
         }
     }
 }

@@ -2,7 +2,7 @@ const database = require('../models')
 const uuid = require('uuid')
 class RoleService{
     async register(dto){
-        const role = database.role.findOne({
+        const role = await database.roles.findOne({
             where:{
                 name: dto.name
             }
@@ -11,11 +11,12 @@ class RoleService{
             throw new Error ("Role already registered")
         }
         try{
-            const newRole = database.roles.create({
+            const newRole = await database.roles.create({
                 id: uuid.v4(),
                 name: dto.name,
                 description: dto.description
             })
+            return newRole
         }catch(error){
             throw new Error('Error registering the role')
         }
