@@ -1,13 +1,13 @@
-const { Router} = require('express')
+const { Router } = require('express')
 const RoleController = require('../controllers/roleController')
 
 const router = Router()
 
 router
     .post('/role', RoleController.register)
-    .get('/role')
-    .get('/role/:id')
-    .delete('/role/:id')
-    .put('/role/:id')
+    .get('/role', RoleController.getAll)
+    .get('/role/:id', RoleController.getById)
+    .put('/role/:id', RoleController.update)
+    .delete('/role/:id', RoleController.delete)
 
 module.exports = router

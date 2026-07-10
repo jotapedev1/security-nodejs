@@ -11,14 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      user.belongsToMany(models.role, {
-        through: models.user_roles,
+      user.belongsToMany(models.roles, {
+        through: models.user_role,
         as: 'user_roles',
         foreignKey: 'user_id'
       });
-      user.belongsToMany(models.permission, {
+      user.belongsToMany(models.permissions, {
         through: models.user_permissions,
-        as: 'user_permissions',
+        as: 'user_permission',
         foreignKey: 'user_id'
       });
     }
